@@ -18,7 +18,7 @@ def parse_tag_string(tag_string: str, delimiter: str = ','):
     if not tag_string:
         return []
     names = tag_string.strip().split(delimiter)
-    names = [name for name in names if name]
+    names = [name.lower() for name in names if name]
     names.sort(key=str.lower)
 
     return names

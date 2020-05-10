@@ -230,3 +230,6 @@ typings/
 /tmp
 # Database file
 /data
+
+### yanbc
+pyvenv/
