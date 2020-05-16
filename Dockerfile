@@ -6,7 +6,7 @@ RUN apt-get -y install build-essential
 RUN apt-get -y install mime-support
 
 # Install requirements and uwsgi server for running python web apps
-WORKDIR /etc/linkding
+WORKDIR /linkding
 COPY requirements.prod.txt ./requirements.txt
 RUN pip install -U pip
 RUN pip install -Ur requirements.txt
@@ -15,7 +15,7 @@ RUN pip install -Ur requirements.txt
 COPY . .
 
 # Expose uwsgi server at port 9090
-EXPOSE 9090
+# EXPOSE 9090
 
 # Run bootstrap logic
 RUN ["chmod", "+x", "./bootstrap.sh"]
