@@ -54,10 +54,28 @@ If you can not or don't want to use Docker you can install the application manua
 
 ### Hosting
 
-The application runs in a web-server called [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) that is production-ready and that you can expose to the web. If you don't know how to configure your server to expose the application to the web there are several more steps involved. I can not support support the process here, but I can give some pointers on what to search for:
-- first get the app running (described in this document)
-- open the port that the application is running on in your servers firewall
-- depending on your network configuration, forward the opened port in your network router, so that the application can be addressed from the internet using your public IP address and the opened port
+The application runs in a web-server called [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) that is production-ready and that you can expose to the web. But generally, you would want to run with a more capable web server designed specifially for handling incoming http/https requests, e.g. `Nginx` and `Apache`. Here is how you can setup this project with an Nginx server:
+- First of all, you should know how to setup your Nginx server, if you don't, google is your friend
+- Then run the following command:
+```bash
+# This command would make a folder called linkding in your home directory.
+# And yes, you can replace it's location with any directory you like.
+# But remember to change linkding_nginx.conf as well.
+git checkout nginx
+
+mkdir -p $(echo $HOME)/server/linkding
+
+docker build -t linkding .
+
+docker run -d --name linkding -v $(echo $HOME)/server/linkding:/server_linkding/ linkding
+
+docker run -d --name nginx -p 80:80 -v $(echo $HOME)/server/:/server/ nginx
+
+docker cp ./linkding_nginx.conf nginx:/etc/nginx/conf.d/
+cp -r ./static $(echo $HOME)/server/linkding/static
+
+docker exec nginx nginx -s reload
+```
 
 ### Backups
 

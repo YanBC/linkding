@@ -3,8 +3,10 @@
 
 # Create data folder if it does not exist
 mkdir -p /server_linkding/
+
 # Run database migration
 python manage.py migrate
+
 # Generate secret key file if it does not exist
 python manage.py generate_secret_key
 

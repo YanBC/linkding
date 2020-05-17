@@ -124,7 +124,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Collect static files in static folder
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = '/server_linkding/static/'
 
 # Turn off SASS compilation by default
 SASS_PROCESSOR_ENABLED = False
