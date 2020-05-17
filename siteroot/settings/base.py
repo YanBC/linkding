@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
-        'NAME': /srv/linkding.sqlite3
+        'NAME': '/server_linkding/linkding.sqlite3'
     }
 }
 

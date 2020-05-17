@@ -2,7 +2,7 @@
 # Bootstrap script that gets executed in new Docker containers
 
 # Create data folder if it does not exist
-mkdir -p /server/linkding/
+mkdir -p /server_linkding/
 # Run database migration
 python manage.py migrate
 # Generate secret key file if it does not exist
